@@ -5,7 +5,8 @@ import CommentForm from "./CommentForm";
 
 function CommentActions({ commentId }: { commentId: string }) {
     const [replying, setReplying] = useState(false);
-  
+    
+    
     return (
       <>
         <div>
@@ -22,8 +23,10 @@ function Comment({ comment }: { comment: CommentWithChildren }) {
             <p className="pl-md text-red-300">
                 {comment.body}
             </p>
-        
-        <CommentActions commentId={comment.id} />
+        <div className="flex">
+          <CommentActions commentId={comment.id} />
+          <button className="pl-3">Delete</button>
+        </div>
         <div>
             {comment.children && comment.children.length > 0 && (
                 <ListComments comments={comment.children} />

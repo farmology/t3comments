@@ -18,6 +18,16 @@ export const commentRouter = createTRPCRouter({
             const comment = await ctx.prisma.comment.create({
                 data: {
                     body,
+                    Post: { 
+                        connect: {
+                            id: 'test',
+                        },
+                    },
+                    user: {
+                        connect: {
+                            id: 'test',
+                        },
+                    },
                     ...(parentId && {
                       parent: {
                         connect: {

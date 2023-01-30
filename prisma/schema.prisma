@@ -23,7 +23,7 @@ model User {
   emailVerified DateTime?
   image         String?
   Post          Post[]
-  Comment       Comment[]
+  
 }
 model Post {
   id        String @id @default(cuid())
@@ -32,7 +32,7 @@ model Post {
   permalink String @unique
   user   User   @relation(fields: [userId], references: [id])
   userId String
-  Comment Comment[]
+  
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
@@ -40,10 +40,10 @@ model Post {
 model Comment {
   id   String @id @default(cuid())
   body String
-  user   User   @relation(fields: [userId], references: [id])
-  userId String
-  Post   Post   @relation(fields: [postId], references: [id])
-  postId String
+  
+  userId String?
+  
+  postId String?
   children Comment[] @relation("comment_children")
   parent   Comment?  @relation("comment_children", fields: [parentId], references: [id])
   parentId String?

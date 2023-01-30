@@ -1,5 +1,6 @@
 
 import { useRouter } from "next/router";
+import formComments from "../helpers/formatComments";
 
 
 import { api } from "../utils/api";
@@ -20,7 +21,7 @@ function CommentSection() {
   return (
     <div>
       <CommentForm />
-      {data && <ListComments comments={data || []} />}
+      {data && <ListComments comments={formComments(data || [])} />}
     </div>
   );
 }

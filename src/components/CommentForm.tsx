@@ -9,6 +9,7 @@ function CommentForm({ parentId }: { parentId?: string }) {
     };
     const { mutate: addComment } = api.comment.addComment.useMutation({
         onSuccess: (comment) => {
+            console.log(comment);
             setInput('');
         },
     });

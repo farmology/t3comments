@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import { useState } from "react";
-import { trpc, CommentWithChildren } from "../../utils/trpc";
+import { CommentWithChildren } from "../utils/api";
 import CommentForm from "./CommentForm";
 
 function CommentActions({ commentId }: { commentId: string }) {
@@ -17,19 +17,19 @@ function CommentActions({ commentId }: { commentId: string }) {
 
 function Comment({ comment }: { comment: CommentWithChildren }) {
     return (
-      <>                   
+      <div className="flex flex-col pl-md text-white">                   
         <div>
             <p>
                 {comment.body}
             </p>
         </div>
         <CommentActions commentId={comment.id} />
-        <div>
+        <div className="flex flex-col pl-lg text-yellow">
             {comment.children && comment.children.length > 0 && (
                 <ListComments comments={comment.children} />
             )}
         </div>
-      </>
+      </div>
     );
   }
 

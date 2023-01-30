@@ -1,5 +1,6 @@
 
 import { useRouter } from "next/router";
+import { useState } from "react";
 import formComments from "../helpers/formatComments";
 
 
@@ -11,10 +12,11 @@ function CommentSection() {
   const router = useRouter();
 
   const permalink = router.query.permalink as string;
-
+  const [comments, setComments] = useState({});
   const { data } = api.comment.getComments.useQuery(undefined, {
     onSuccess: (data) => {
-        permalink
+        console.log(data);
+        setComments(data);
     },
   });
      

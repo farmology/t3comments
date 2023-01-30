@@ -17,14 +17,14 @@ function CommentActions({ commentId }: { commentId: string }) {
 
 function Comment({ comment }: { comment: CommentWithChildren }) {
     return (
-      <div className="flex flex-col pl-md text-white">                   
+      <div className="flex flex-col pl-16">                   
         
-            <p>
+            <p className="pl-md text-red-300">
                 {comment.body}
             </p>
         
         <CommentActions commentId={comment.id} />
-        <div className="">
+        <div>
             {comment.children && comment.children.length > 0 && (
                 <ListComments comments={comment.children} />
             )}
@@ -35,7 +35,7 @@ function Comment({ comment }: { comment: CommentWithChildren }) {
 
 function ListComments({ comments }: { comments: Array<CommentWithChildren> }) {
     return (
-      <div className="pl-md text-red">
+      <div>
         {comments.map((comment) => {
           return <Comment key={comment.id} comment={comment} />;
         })}

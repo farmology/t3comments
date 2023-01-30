@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import { useState } from "react";
-import { CommentWithChildren } from "../utils/api";
+import { api, CommentWithChildren } from "../utils/api";
 import CommentForm from "./CommentForm";
 
 function CommentActions({ commentId }: { commentId: string }) {
@@ -17,15 +17,24 @@ function CommentActions({ commentId }: { commentId: string }) {
     )};
 
 function Comment({ comment }: { comment: CommentWithChildren }) {
+  const { mutate: deleteComment } = api.comment.deleteComment.useMutation({
+    onSuccess: (comment) => {
+        console.log(comment);
+        
+        
+    },
+});
     return (
       <div className="flex flex-col pl-16">                   
         
             <p className="pl-md text-red-300">
                 {comment.body}
             </p>
-        <div className="flex">
+        <div className="flex text-gray-300">
           <CommentActions commentId={comment.id} />
-          <button className="pl-3">Delete</button>
+          <form>
+          <button type='submit' className="pl-3" onClick={() => deleteComment({ id: comment.id })}>Delete</button>
+          </form>
         </div>
         <div>
             {comment.children && comment.children.length > 0 && (

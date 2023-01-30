@@ -23,9 +23,7 @@ const Home: NextPage = () => {
           <div>
             <CommentSection />
           </div>
-          <p className="text-2xl text-white">
-            {hello.data ? hello.data.greeting : "Loading tRPC query..."}
-          </p>
+          
         </div>
       </main>
     </>

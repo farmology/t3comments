@@ -28,6 +28,18 @@ export const commentRouter = createTRPCRouter({
                   },
                 });
             return comment;
-        })
+        }),
+    deleteComment: publicProcedure
+        .input(z.object({
+            id: z.string(),
+        }))
+        .mutation( async ({ input, ctx }) => {
+            const { id } = input
+            const comment = await ctx.prisma.comment.delete({
+                where: {
+                    id: id
+                }
+            })
+        })    
     })
   

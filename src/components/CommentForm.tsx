@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { api } from '../utils/api';
 
-function CommentForm() {
+function CommentForm({ parentId }: { parentId?: string }) {
     const [input, setInput] = useState<string>('');
     const handleSubmit = (e: { preventDefault: () => void; }) => {
         e.preventDefault();
@@ -17,7 +17,7 @@ function CommentForm() {
             <input type='text' value={input} onChange={(e) => setInput(e.target.value)} />
             <button  
                 className="rounded-full bg-white/10 px-10 py-3 font-semibold text-white no-underline transition hover:bg-white/20" 
-                onClick={() => addComment({ body: input })}>
+                onClick={() => addComment({ body: input, parentId })}>
                 Reply</button>
         </form>
     )

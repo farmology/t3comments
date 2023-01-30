@@ -2,12 +2,7 @@ import React, { useRef, useState } from 'react'
 import { api } from '../utils/api';
 
 function CommentForm({ parentId }: { parentId?: string }) {
-    const [input, setInput] = useState<string>('');
-    
-    const handleSubmit = (e) => {
-        
-    }
-    
+    const [input, setInput] = useState<string>('');           
     const { mutate: addComment } = api.comment.addComment.useMutation({
         onSuccess: (comment) => {
             console.log(comment);

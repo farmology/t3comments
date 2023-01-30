@@ -1,4 +1,3 @@
-import { useRouter } from "next/router";
 import { useState } from "react";
 import { api, CommentWithChildren } from "../utils/api";
 import CommentForm from "./CommentForm";

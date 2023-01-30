@@ -3,13 +3,13 @@ import { api } from '../utils/api';
 
 function CommentForm({ parentId }: { parentId?: string }) {
     const [input, setInput] = useState<string>('');
-    const handleSubmit = (e: { preventDefault: () => void; }) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
-        
-    };
+    }
     const { mutate: addComment } = api.comment.addComment.useMutation({
         onSuccess: (comment) => {
             console.log(comment);
+            
             setInput('');
         },
     });
